@@ -90,7 +90,6 @@ class ISHARECommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         key = args[0] + "." + args[1]
-        key = args[0] + "." + args[1]
         try:
             value = obj_dict[key]
             print(value)
@@ -110,20 +109,22 @@ class ISHARECommand(cmd.Cmd):
             return
         class_name = args[0]
         class_id = args[1]
-        storage = models.storage
-        storage.reload()
-        obj_dict = storage.all()
+
         try:
             eval(class_name)
         except NameError:
             print("** class doesn't exist **")
             return
+        storage = models.storage
+        storage.reload()
+        obj_dict = storage.all(class_name)
         key = class_name + "." + class_id
+        delete__obj = obj_dict[key]
         try:
             del obj_dict[key]
         except KeyError:
             print("** no instance found **")
-        storage.save()
+        storage.delete(delete__obj)
 
     def do_all(self, args):
         """

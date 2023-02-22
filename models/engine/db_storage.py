@@ -27,9 +27,6 @@ class DBStorage():
         db_host = os.getenv('ISHARE_MYSQL_HOST', default=None)
         db_name = os.getenv('ISHARE_MYSQL_DB', default=None)
         connection = 'mysql+mysqldb://{}:{}@{}/{}'
-        # print(connection.format(
-        #     username, password, db_host, db_name))
-        # sys.exit(1)
         self.__engine = create_engine(connection.format(
             username, password, db_host, db_name), pool_pre_ping=True)
 
