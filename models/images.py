@@ -16,4 +16,4 @@ class Image(BaseModel, Base):
     image_name = Column(String(128), nullable=False)
     image_path = Column(String(128), nullable=False)
     shared_with = relationship("SharedWith", backref="image",
-                            cascade="delete")
+                               cascade="delete")

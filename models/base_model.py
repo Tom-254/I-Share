@@ -11,6 +11,7 @@ from sqlalchemy import Column, String, DateTime
 
 Base = declarative_base()
 
+
 class BaseModel:
     """
         Base class inheritated by other classes
@@ -18,9 +19,9 @@ class BaseModel:
 
     id = Column(String(60), nullable=False, primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow(),
-                            nullable=False)
+                        nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow(),
-                            nullable=False)
+                        nullable=False)
 
     def __init__(self, *args, **kwargs):
         """
@@ -78,8 +79,10 @@ class BaseModel:
         except KeyError:
             pass
         copy_dict['__class__'] = self.__class__.__name__
-        copy_dict['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        copy_dict['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        copy_dict['updated_at'] = self.updated_at.strftime(
+            "%Y-%m-%dT%H:%M:%S.%f")
+        copy_dict['created_at'] = self.created_at.strftime(
+            "%Y-%m-%dT%H:%M:%S.%f")
 
         return (copy_dict)
 
@@ -89,4 +92,3 @@ class BaseModel:
                 by calling the method delete.
         """
         models.storage.delete(self)
-

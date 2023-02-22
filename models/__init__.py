@@ -14,5 +14,3 @@ classes = {"User": User, "BaseModel": BaseModel,
 
 storage = DBStorage()
 storage.reload()
-
-
