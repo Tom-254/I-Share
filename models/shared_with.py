@@ -13,3 +13,7 @@ class SharedWith(BaseModel, Base):
     __tablename__ = "shared_with"
     user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
     image_id = Column(String(60), ForeignKey('images.id'), nullable=False)
+
+    def __init__(self, *args, **kwargs):
+        """initializes Image"""
+        super().__init__(*args, **kwargs)

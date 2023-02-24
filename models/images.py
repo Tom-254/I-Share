@@ -17,3 +17,7 @@ class Image(BaseModel, Base):
     image_path = Column(String(128), nullable=False)
     shared_with = relationship("SharedWith", backref="image",
                                cascade="delete")
+
+    def __init__(self, *args, **kwargs):
+        """initializes Image"""
+        super().__init__(*args, **kwargs)
