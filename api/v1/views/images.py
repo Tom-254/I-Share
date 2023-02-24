@@ -44,3 +44,29 @@ def put_image(image_id=None):
 
     image.save()
     return make_response(jsonify(image.to_dict()), 201)
+
+
+@app_views.route('/images', methods=['GET'])
+@app_views.route('/images/<image_id>', methods=['GET'])
+def get_amenity(image_id=None):
+    """Retrieves the list of all Image objects
+    or a specific Image object"""
+    if image_id is None:
+        images = [image.to_dict() for image
+                     in storage.all(Image).values()]
+        return make_response(jsonify(images), 200)
+    image = storage.get(Image, image_id)
+    if image is None:
+        abort(404)
+    return make_response(jsonify(image.to_dict()), 200)
+
+@app_views.route('/images/<image_id>', methods=['DELETE'],
+                 strict_slashes=False)
+def del_amenity(image_id=None):
+    """Deletes a Image object"""
+    image = storage.get(Image, image_id)
+    if image is None:
+        abort(404)
+    image.delete()
+    storage.save()
+    return jsonify({})
