@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ "$1" != "" ]; then
-	git add . && git commit -m "$1" && git push dev
+	git add . && git commit -m "$1" && git push orgin dev
 
     else
         echo "Kindly specify the commit message"
