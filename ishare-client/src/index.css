@@ -1,0 +1,86 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  outline: none;
+  list-style:  none;
+  font-family: 'Nunito', sans-serif;
+}
+
+:root {
+    /**UI Font Weights**/
+    --font-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-extrabold: 800;
+    --weight-black: 900;
+    --weight-1000: 1000;
+
+    /**UI Font Sizes **/
+    --font-10: 10px;
+    --font-12: 12px;
+    --font-14: 14px;
+    --font-16: 16px;
+    --font-18: 18px;
+    --font-21: 21px;
+    --font-24: 24px;
+    --font-30: 30px;
+
+    /** UI Colors**/
+    --color-primary: #346AF2;
+    --color-border: #E3E3E3;
+    --color-white: #ffffff;
+
+    /** UI Spacings **/
+    --spacing-largest-: 30px;
+    --spacing-larger: 25px;
+    --spacing-large: 20px;
+    --spacing-small: 15px;
+    --spacing-smaller: 10px;
+    --spacing-smallest: 5px;
+
+    /** UI Effects **/
+    --shadow-container: 0px 0px 86px 31px rgba(52, 106, 242, 0.04);
+    --shadow-button: 0px 5px 21px 0px rgba(52, 106, 242, 0.36);
+
+    /** UI Border Radius **/
+    --radius-container: 46px;
+    --radius-button: 10px;
+
+    /** UI Heights **/
+    --height-large: 60px;
+}
+
+/*** General Component Classes ***/
+.button-primary {
+    height: var(--large-height);
+    border-radius: var(--radius-button);
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    border:  1px solid var(--color-primary);
+}
+
+.button-primary:hover {
+    color: var(--color-primary);
+    background-color: var(--color-white);
+}
+
+
+.button-secondary {
+    height: var(--large-height);
+    border-radius: var(--radius-button);
+    color: var(--color-primary);
+    background-color: var(--color-white);
+    border:  1px solid var(--color-primary);
+}
+
+.button-secondary:hover {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+}
+
+
