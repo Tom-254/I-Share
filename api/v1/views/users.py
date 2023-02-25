@@ -5,6 +5,7 @@ from flask import jsonify, abort, request, make_response
 from models import storage
 from models.user import User
 
+
 def get_user(user_id):
     """
         Gets a user
@@ -26,7 +27,7 @@ def get_users(user_id):
         dict_user = user.to_dict()
         return jsonify(dict_user)
 
-    users = storage.all(User)
+    users = storage.all("User")
     all_users = []
     for user in users.values():
         all_users.append(user.to_dict())
@@ -40,7 +41,7 @@ def delete_user(user_id):
     user = get_user(user_id)
     storage.delete(user)
     storage.save()
-    return jsonify({})
+    return jsonify({"success" : f"{user.first_name} Deleted successfully"})
 
 
 def post_user(request):
@@ -50,7 +51,7 @@ def post_user(request):
 
     try:
         request_data = request.get_json()
-    except  Exception as ex:
+    except Exception as ex:
         return make_response(jsonify({'error': 'Not a JSON'}), 400)
 
     for field in ["email", "password", "first_name", "last_name"]:
@@ -78,7 +79,7 @@ def put_user(user_id, request):
     return jsonify(user.to_dict())
 
 
-@app_views.route('/users', methods=['GET', 'POST', ],
+@app_views.route('/users', methods=['GET', 'POST'],
                  defaults={'user_id': None}, strict_slashes=False)
 @app_views.route('/users/<user_id>', methods=['GET', 'DELETE', 'PUT'])
 def users(user_id):
