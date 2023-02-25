@@ -1,2 +1,2 @@
 # I-Share Environment Variables
-#### export ISHARE_MYSQL_USER=ishare_dev export ISHARE_MYSQL_PWD=Testing254! export ISHARE_MYSQL_HOST=localhost export ISHARE_MYSQL_DB=ishare_dev_db
+#### export ISHARE_MYSQL_USER=ishare_dev export ISHARE_MYSQL_PWD=Testing254! export ISHARE_MYSQL_HOST=localhost export ISHARE_MYSQL_DB=ishare_dev_db export ISHARE_API_HOST=0.0.0.0 export ISHARE_API_PORT=5000 python3 -m api.v1.app
