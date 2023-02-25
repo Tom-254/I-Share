@@ -26,8 +26,3 @@ def get_shared_with(shared_id=None):
 def del_shared_with(share_id=None):
     """Deletes a Image object"""
     print(request.headers)
-
-
-
-
-
