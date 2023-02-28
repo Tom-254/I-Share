@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../context/authContext';
+
 import IShareButton from '../components/IShareButton'
 import IShareInput from '../components/IShareInput'
 import IShareLogo from '../components/IShareLogo'
@@ -10,13 +12,19 @@ const Login = () => {
     password: "",
   });
 
+  const { signin } = useContext(AuthContext);
+
   const onChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("submitted");
+    try {
+      await signin(inputs);
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   return (

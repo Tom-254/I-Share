@@ -58,6 +58,12 @@ def post_user(request):
         if field not in request_data:
             return make_response(jsonify({'error': f"Missing {field}"}), 400)
 
+    try:
+        user = storage.get_user_with_email(request_data["email"]).to_dict()
+        return make_response(jsonify({"error": "Email Does exist. Please Login."}))
+    except Exception:
+        pass
+
     user = User(**request_data)
     storage.new(user)
     storage.save()
@@ -78,8 +84,35 @@ def put_user(user_id, request):
     user.save()
     return jsonify(user.to_dict())
 
+@app_views.route('/login', methods=['POST'])
+def login():
+    """
+    Gets a single user
+    """
+    request_data = request.get_json()
+    if request_data is None:
+        abort(400, 'Not a JSON')
 
-@app_views.route('/users', methods=['GET', 'POST'],
+    for field in ["email", "password"]:
+        if field not in request_data:
+            return make_response(jsonify({'error': f"Missing {field}"}), 400)
+
+    try:
+        user = storage.get_user_with_email(request_data["email"]).to_dict()
+    except Exception:
+        return make_response(jsonify({"error": "Email Does not exist!"}))
+
+    return make_response(jsonify(user), 200)
+
+
+@app_views.route('/signup', methods=['POST'])
+def signup():
+    """
+    Creates a single user
+    """
+    return make_response(post_user(request), 201)
+
+@app_views.route('/users', methods=['GET'],
                  defaults={'user_id': None}, strict_slashes=False)
 @app_views.route('/users/<user_id>', methods=['GET', 'DELETE', 'PUT'])
 def users(user_id):
@@ -90,7 +123,5 @@ def users(user_id):
         return make_response(get_users(user_id), 200)
     elif (request.method == "DELETE"):
         return make_response(delete_user(user_id), 200)
-    elif (request.method == "POST"):
-        return make_response(post_user(request), 201)
     elif (request.method == "PUT"):
         return make_response(put_user(user_id, request), 200)
