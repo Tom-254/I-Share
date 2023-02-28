@@ -34,17 +34,24 @@
     --color-primary: #346AF2;
     --color-border: #E3E3E3;
     --color-white: #ffffff;
+    --color-field-hover: #94BDFF;
+    --color-black: #000000;
 
     /** UI Spacings **/
-    --spacing-largest-: 30px;
-    --spacing-larger: 25px;
-    --spacing-large: 20px;
-    --spacing-small: 15px;
-    --spacing-smaller: 10px;
-    --spacing-smallest: 5px;
+    --spacing-50: 50px;
+    --spacing-45: 45px;
+    --spacing-40: 40px;
+    --spacing-35: 35px;
+    --spacing-30: 30px;
+    --spacing-25: 25px;
+    --spacing-20: 20px;
+    --spacing-15: 15px;
+    --spacing-10: 10px;
+    --spacing-5: 5px;
 
     /** UI Effects **/
-    --shadow-container: 0px 0px 86px 31px rgba(52, 106, 242, 0.04);
+    --shadow-container: 0px 10px 86px 10px rgba(52, 106, 242, 0.1);
+    ;
     --shadow-button: 0px 5px 21px 0px rgba(52, 106, 242, 0.36);
 
     /** UI Border Radius **/
@@ -52,16 +59,33 @@
     --radius-button: 10px;
 
     /** UI Heights **/
-    --height-large: 60px;
+    --height-60: 60px;
+    --height-55: 55px;
+    --height-50: 50px;
 }
 
 /*** General Component Classes ***/
+
+.main {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.logo {
+    width: 150px;
+}
+
+/*= Buttons =*/
 .button-primary {
-    height: var(--large-height);
+    height: var(--height-50);
     border-radius: var(--radius-button);
     color: var(--color-white);
     background-color: var(--color-primary);
     border:  1px solid var(--color-primary);
+    padding: 18px;
+    min-width: 100px;
+    font-size: var(--font-18);
+    width: 100%;
 }
 
 .button-primary:hover {
@@ -71,7 +95,7 @@
 
 
 .button-secondary {
-    height: var(--large-height);
+    height: var(--large-50);
     border-radius: var(--radius-button);
     color: var(--color-primary);
     background-color: var(--color-white);
@@ -82,5 +106,137 @@
     color: var(--color-white);
     background-color: var(--color-primary);
 }
+
+/*= End Buttons =*/
+
+/*= Inputs  =*/
+
+
+
+.inputs-container {
+    width: 100%;
+    gap: var(--spacing-15);
+}
+
+.input-container {
+    width: 100%;
+}
+
+.input-label {
+    display:  block;
+    padding-bottom:  var(--spacing-10);
+    font-weight: var(--font-medium);
+}
+
+.input-field {
+    height: var(--height-large);
+    border: 1px solid var(--color-border);
+    background-color:  var(--color-white);
+    font-size: var(--font-16);
+    border-radius: var(--radius-button);
+    padding: var(--spacing-15);
+    width: 100%;
+}
+
+.input-field:hover {
+    border-color: var(--color-field-hover);
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+/*= End Inputs  =*/
+
+/*= Layouts =*/
+.flex {
+    display: flex;
+    gap: var(--spacing-15);
+}
+
+.content-container {
+    padding: 0 20px;
+    /* height: 100vh; */
+    margin: auto auto;
+    width: 100%;
+    margin: 30px 0;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-center__column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/*= End Layouts =*/
+
+
+/*** End General Component Classes ***/
+
+/** Auth Form **/
+
+.title-button__container {
+    width: var(--spacing-15);
+    width: 100%;
+    align-items: center;
+    gap: var(--spacing-20);
+}
+
+.form-title {
+    font-size: var(--font-24);
+    font-weight: var(--weight-semibold);
+    text-align: center;
+}
+
+.form-forgot-password {
+    color: var(--color-black);
+    width: max-content;
+    font-size: var(--font-16);
+    font-weight: var(--weight-bold);
+}
+
+.form-forgot-password:hover {
+    color: var(--color-primary);
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto auto;
+    padding: var(--spacing-40) var(--spacing-35);
+    box-shadow: var(--shadow-container);
+    border-radius: var(--radius-container);
+    flex-grow: 1;
+    gap: var(--spacing-25);
+}
+
+.form-account-message {
+    font-size: var(--font-18);
+    text-align: center;
+}
+
+.to-signup-signin {
+    font-weight: var(--weight-bold);
+    color: var(--color-black);
+}
+
+.to-signup-signin:hover {
+    color: var(--color-primary);
+}
+
+/** End Auth Form **/
+
 
 

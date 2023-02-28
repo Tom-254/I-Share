@@ -1,8 +1,12 @@
 import React from 'react'
 
-const IShareButton = () => {
+const IShareButton = ({buttonName, buttonStyle}) => {
   return (
-    <div>IShareButton</div>
+    <>
+      <button className={`${buttonStyle ? buttonStyle : "flex-center button-primary"}`} type="button">
+        {buttonName}
+      </button>
+    </>
   )
 }
 
