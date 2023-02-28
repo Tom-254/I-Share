@@ -86,6 +86,7 @@
     min-width: 100px;
     font-size: var(--font-18);
     width: 100%;
+    cursor: pointer;
 }
 
 .button-primary:hover {
@@ -100,6 +101,7 @@
     color: var(--color-primary);
     background-color: var(--color-white);
     border:  1px solid var(--color-primary);
+    cursor: pointer;
 }
 
 .button-secondary:hover {
@@ -212,7 +214,7 @@
     color: var(--color-primary);
 }
 
-.form-container {   
+.form-container {
     max-width: 600px;
     margin: auto auto;
     padding: var(--spacing-40) var(--spacing-35);
