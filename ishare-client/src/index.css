@@ -212,7 +212,7 @@
     color: var(--color-primary);
 }
 
-.form-container {
+.form-container {   
     max-width: 600px;
     margin: auto auto;
     padding: var(--spacing-40) var(--spacing-35);

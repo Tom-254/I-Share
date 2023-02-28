@@ -28,7 +28,7 @@ const SignUp = () => {
           <IShareButton buttonName={"Login"}  />
         </div>
         <p className='form-account-message'>
-        Already have an account ?  <Link to="/login" className='to-signup-signin'>Sign Up</Link>
+        Already have an account ?  <Link to="/login" className='to-signup-signin'>Login</Link>
         </p>
       </form>
     </div>
