@@ -23,12 +23,14 @@
     /**UI Font Sizes **/
     --font-10: 10px;
     --font-12: 12px;
+    --font-13: 13px;
     --font-14: 14px;
     --font-16: 16px;
     --font-18: 18px;
     --font-21: 21px;
     --font-24: 24px;
     --font-30: 30px;
+    --font-52: 52px;
 
     /** UI Colors**/
     --color-primary: #346AF2;
@@ -36,6 +38,9 @@
     --color-white: #ffffff;
     --color-field-hover: #94BDFF;
     --color-black: #000000;
+    --color-purple: #DF50F6;
+    --color-purple-light: #FFE3FF;
+    --color-yellow: #F2BB47;
 
     /** UI Spacings **/
     --spacing-50: 50px;
@@ -56,12 +61,14 @@
 
     /** UI Border Radius **/
     --radius-container: 46px;
-    --radius-button: 10px;
+    --radius-button: 100px;
+    --radius-input: 10px;
 
     /** UI Heights **/
     --height-60: 60px;
     --height-55: 55px;
     --height-50: 50px;
+    --height-40: 40px;
 }
 
 /*** General Component Classes ***/
@@ -73,6 +80,14 @@
 
 .logo {
     width: 150px;
+}
+
+a {
+    color: var(--color-black);
+}
+
+a:hover {
+    color: var(--color-primary);
 }
 
 /*= Buttons =*/
@@ -135,7 +150,7 @@
     border: 1px solid var(--color-border);
     background-color:  var(--color-white);
     font-size: var(--font-16);
-    border-radius: var(--radius-button);
+    border-radius: var(--radius-input);
     padding: var(--spacing-15);
     width: 100%;
 }
@@ -155,6 +170,7 @@
 .flex {
     display: flex;
     gap: var(--spacing-15);
+    align-items: center;
 }
 
 .content-container {
@@ -181,6 +197,14 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.flex-between {
+    justify-content: space-between;
+}
+
+.flex-grow {
+    flex-grow: 1;
 }
 
 /*= End Layouts =*/
@@ -240,5 +264,78 @@
 
 /** End Auth Form **/
 
+/*** Home Page ***/
+
+.main-body {
+    margin: 20px 70px;
+    gap: 10px;
+    height: 100%;
+}
+
+.nav-left__links {
+    flex-grow: 1;
+    width: 100%;
+}
+
+ul > li {
+    flex-grow: 1;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.nav-login__button {
+    width: 200px;
+}
+
+.hero-section {
+    margin-top: 50px;
+}
+
+.hero-section__content {
+    width: 60%;
+    margin: 0 auto;
+    gap: 20px;
+    align-items: center;
+}
+
+.hero-section__content p {
+    text-align: center;
+}
+
+.hero-section__content p:nth-child(1) {
+    color: var(--color-purple);
+    background-color: var(--color-purple-light);
+    padding: 5px 10px;
+    border-radius: var(--radius-button);
+    font-size: var(--font-13);
+    font-weight: var(--weight-bold);
+    width: max-content;
+    margin: 0 auto;
+}
+
+.hero-section__content p:nth-child(2) {
+    font-size: var(--font-52);
+    font-weight: var(--weight-bold);
+    width: 70%;
+}
+
+.hero-section__content p:nth-child(2) span {
+    color: var(--color-primary);
+}
+
+.hero-section__content p:nth-child(3) {
+    width: 70%;
+}
+
+
+
+
+
+/**Nav Bar **/
+
+/**End NavBar **/
+
+
+/*** End Home Page ***/
 
 
