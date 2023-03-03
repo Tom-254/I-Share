@@ -13,7 +13,7 @@
 
 :root {
     /**UI Font Weights**/
-    --font-medium: 500;
+    --weight-medium: 500;
     --weight-semibold: 600;
     --weight-bold: 700;
     --weight-extrabold: 800;
@@ -30,6 +30,8 @@
     --font-21: 21px;
     --font-24: 24px;
     --font-30: 30px;
+    --font-45: 45px;
+    --font-50: 50px;
     --font-52: 52px;
 
     /** UI Colors**/
@@ -63,8 +65,10 @@
     --radius-container: 46px;
     --radius-button: 100px;
     --radius-input: 10px;
+    --radius-30: 30px;
 
     /** UI Heights **/
+    --height-300: 300px;
     --height-60: 60px;
     --height-55: 55px;
     --height-50: 50px;
@@ -88,6 +92,16 @@ a {
 
 a:hover {
     color: var(--color-primary);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section {
+    margin-bottom: 50px;
 }
 
 /*= Buttons =*/
@@ -266,11 +280,43 @@ a:hover {
 
 /*** Home Page ***/
 
+/** Section Generals **/
+
+.section-titles {
+    gap: 10px;
+}
+
+.section-titles__top-text {
+    color: var(--color-purple);
+    background-color: var(--color-purple-light);
+    padding: 5px 10px;
+    border-radius: var(--radius-button);
+    font-size: var(--font-13);
+    font-weight: var(--weight-bold);
+    width: max-content;
+    margin: 0 auto;
+}
+
+.section-titles__middle-text {
+    font-weight: var(--weight-bold);
+    font-size: var(--font-45);
+}
+
+.section-titles__bottom-text {
+
+}
+
+/** End Section Generals **/
+
 .main-body {
-    margin: 20px 70px;
+    padding: 20px 70px;
     gap: 10px;
     height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
 }
+
+/**Nav Bar **/
 
 .nav-left__links {
     flex-grow: 1;
@@ -287,12 +333,16 @@ ul > li {
     width: 200px;
 }
 
+/**End NavBar **/
+
 .hero-section {
     margin-top: 50px;
+    gap: 30px;
 }
 
+/** Hero Main Items **/
 .hero-section__content {
-    width: 60%;
+    width: 100%;
     margin: 0 auto;
     gap: 20px;
     align-items: center;
@@ -302,16 +352,6 @@ ul > li {
     text-align: center;
 }
 
-.hero-section__content p:nth-child(1) {
-    color: var(--color-purple);
-    background-color: var(--color-purple-light);
-    padding: 5px 10px;
-    border-radius: var(--radius-button);
-    font-size: var(--font-13);
-    font-weight: var(--weight-bold);
-    width: max-content;
-    margin: 0 auto;
-}
 
 .hero-section__content p:nth-child(2) {
     font-size: var(--font-52);
@@ -327,13 +367,92 @@ ul > li {
     width: 70%;
 }
 
+.hero-section__bottom {
+    width: 100%;
+    height: var(--height-300);
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.hero-section__bottom > img:nth-child(1) {
+    width: 60%;
+    border-radius: var(--radius-30);
+}
+
+.hero-section__bottom > img:nth-child(2) {
+    width: 35%;
+    border-radius: var(--radius-30);
+}
+
+/** End Hero Main Items **/
+
+/** AD Section  **/
+
+.copy-section {
+    justify-content: space-between;
+}
+
+.copy-section .section-titles__top-text {
+    margin: 0;
+}
+
+.copy-section__left {
+    display: flex;
+}
+
+.copy-circle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.copy-circle img {
+
+    display: flex;
+    width: 100%;
+}
+
+.copy-circle__content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.copy-image {
+    margin-left: -120px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.copy-image img {
+    width: 100%;
+    height: max-content;
+}
+
+.copy-circle__content {
+    z-index: 1;
+}
+
+.copy-circle__content p:nth-child(1) {
+    color: var(--color-white);
+    font-size: var(--font-50);
+}
+
+.copy-circle__content p:nth-child(2) {
+    color: var(--color-white);
+    font-size: var(--font-16);
+    /* font-weight: var(--weight-medium); */
+}
 
 
 
-
-/**Nav Bar **/
-
-/**End NavBar **/
+/** End AD Section **/
 
 
 /*** End Home Page ***/
