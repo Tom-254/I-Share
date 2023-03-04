@@ -10,9 +10,9 @@ const SectionTitles = ({topText, middleText, bottomText}) => {
         <p className='section-titles__middle-text'>
             {parse(middleText)}
         </p>
-        <p className='section-titles__bottom-text'>
+        {bottomText ?  <p className='section-titles__bottom-text'>
             {parse(bottomText)}
-        </p>
+        </p> : ""}
     </div>
   )
 }

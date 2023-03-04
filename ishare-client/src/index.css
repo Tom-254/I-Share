@@ -43,6 +43,7 @@
     --color-purple: #DF50F6;
     --color-purple-light: #FFE3FF;
     --color-yellow: #F2BB47;
+    --color-link-hover: #0031B9;
 
     /** UI Spacings **/
     --spacing-50: 50px;
@@ -60,8 +61,13 @@
     --shadow-container: 0px 10px 86px 10px rgba(52, 106, 242, 0.1);
     ;
     --shadow-button: 0px 5px 21px 0px rgba(52, 106, 242, 0.36);
+    --shadow-card: 0px 0px 20px 0px rgba(0, 0, 0, 0.05);
+    --shadow-about: 0px 22px 50px 0px rgba(0, 0, 0, 0.31);
+
+
 
     /** UI Border Radius **/
+    --radius-about: 56px;
     --radius-container: 46px;
     --radius-button: 100px;
     --radius-input: 10px;
@@ -69,10 +75,15 @@
 
     /** UI Heights **/
     --height-300: 300px;
+    --height-65: 65px;
     --height-60: 60px;
     --height-55: 55px;
     --height-50: 50px;
     --height-40: 40px;
+
+    /** Gradients **/
+    --card-gradient: linear-gradient(115.31deg, #FEF6DC 4.65%, #F4D5DE 39.9%, #D7C1EC 73.57%);
+
 }
 
 /*** General Component Classes ***/
@@ -141,7 +152,6 @@ img {
 /*= End Buttons =*/
 
 /*= Inputs  =*/
-
 
 
 .inputs-container {
@@ -302,9 +312,9 @@ img {
     font-size: var(--font-45);
 }
 
-.section-titles__bottom-text {
+/* .section-titles__bottom-text {
 
-}
+} */
 
 /** End Section Generals **/
 
@@ -348,7 +358,7 @@ ul > li {
     align-items: center;
 }
 
-.hero-section__content p {
+.hero-section__content p:nth-child(1) {
     text-align: center;
 }
 
@@ -357,6 +367,7 @@ ul > li {
     font-size: var(--font-52);
     font-weight: var(--weight-bold);
     width: 70%;
+    text-align: center;
 }
 
 .hero-section__content p:nth-child(2) span {
@@ -365,6 +376,7 @@ ul > li {
 
 .hero-section__content p:nth-child(3) {
     width: 70%;
+    text-align: center;
 }
 
 .hero-section__bottom {
@@ -450,11 +462,167 @@ ul > li {
     /* font-weight: var(--weight-medium); */
 }
 
-
-
 /** End AD Section **/
+
+/** Feature Section **/
+
+
+.features-section {
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.card-container {
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius-30);
+    padding: 16px 16px 29px 16px;
+    gap: 20px;
+}
+
+.card-image-container {
+    background: var(--card-gradient);
+    border-radius: var(--radius-30);
+    padding-left: var(--spacing-40);
+    padding-top: var(--spacing-40);
+    position: relative;
+    padding-bottom: 0;
+}
+
+.card-image img {
+    margin-bottom: -6px;
+}
+
+.card-icon {
+    width: var(--height-65);
+    height: var(--height-65);
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    margin-top: -37px;
+    position: absolute;
+}
+
+.card-icon img {
+    width: auto;
+    height: auto;
+}
+
+
+
+.card-title {
+    margin-top: 20px;
+    font-size: var(--font-24);
+    font-weight: var(--weight-bold);
+}
+
+.card-link {
+    height: 5px;
+    width: 100%;
+    width: max-content;
+}
+
+.card-link {
+    color: var(--color-primary);
+}
+
+.card-link:hover {
+    color: var(--color-link-hover);
+}
+
+/** End Feature Section **/
+
+/** About Section **/
+
+.about-section {
+    gap: 40px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-section .section-titles {
+    align-items: center;
+}
+
+.about-section p {
+    text-align: center;
+}
+
+.about-section__bottom {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: var(--radius-about);
+    box-shadow: var(--shadow-about);
+}
+.about-section__bottom img {
+    width: 100%;
+    height: 411px;
+    border-radius: var(--radius-about);
+}
+
+/** End About Section **/
+
+/** More  Section **/
+.more-section {
+    justify-content: space-between;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 100px;
+}
+
+.more-section .section-titles__top-text {
+    margin: 0;
+}
+
+.more-section__left {
+    gap: 40px;
+    width: 90%;
+}
+
+.more-section__left-image {
+
+
+}
+
+.more-section__left-image img {
+    border-radius: var(--radius-30);
+    height: 539px;
+    /* width: 90%; */
+}
+
+.more-section__right {
+    /* width: 50%; */
+    margin-top: -50px;
+    align-content: flex-end;
+    width: 90%;
+    gap: var(--spacing-45);
+
+}
+
+.more-section__right-content {
+    gap: var(--spacing-30);
+}
+
+.more-section__right-image {
+    /* width: 200px; */
+    /* justify-content: flex-end; */
+}
+
+.more-section__right-image img {
+    border-radius: var(--radius-30);
+    height: 539px;
+    
+}
+
+/** End More  Section **/
 
 
 /*** End Home Page ***/
 
-
+/*** Media queries ***/
+@media screen and (min-width: 1250px) {
+    .main-body {
+        padding: 20px 150px;
+    }
+}
