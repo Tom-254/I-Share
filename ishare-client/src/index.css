@@ -37,6 +37,7 @@
     /** UI Colors**/
     --color-primary: #346AF2;
     --color-border: #E3E3E3;
+    --color-border-footer: #CECECE;
     --color-white: #ffffff;
     --color-field-hover: #94BDFF;
     --color-black: #000000;
@@ -44,8 +45,10 @@
     --color-purple-light: #FFE3FF;
     --color-yellow: #F2BB47;
     --color-link-hover: #0031B9;
+    --color-pre-footer: #2A3245;
 
     /** UI Spacings **/
+    --spacing-60: 60px;
     --spacing-50: 50px;
     --spacing-45: 45px;
     --spacing-40: 40px;
@@ -128,6 +131,7 @@ img {
     font-size: var(--font-18);
     width: 100%;
     cursor: pointer;
+    gap: var(--spacing-10);
 }
 
 .button-primary:hover {
@@ -620,6 +624,10 @@ ul > li {
 
 /** Blog section **/
 
+.blog-section {
+    gap: var(--spacing-50);
+}
+
 .blog-section .section-titles p {
     text-align: center;
 }
@@ -642,7 +650,7 @@ ul > li {
 
 .blog-image {
     height: 464px;
-    width: 466px;
+    max-width: 466px;
 }
 
 .blog-image img {
@@ -743,6 +751,76 @@ ul > li {
 
 /** End Blog section **/
 
+/** Pre Footer Section **/
+
+
+
+.pre-footer-section__container {
+    background-color: var(--color-pre-footer);
+    border-radius: var(--radius-30);
+    gap: var(--spacing-50);
+    width: 100%;
+    box-shadow: var(--shadow-about);
+    padding: var(--spacing-50) var(--spacing-10);
+}
+
+.pre-footer-section__container .nav-login__button:hover {
+    background-color: var(--color-link-hover);
+    color: var(--color-white);
+    border-color: var(--color-link-hover);
+}
+
+.pre-footer-content {
+    gap: var(--spacing-15);
+}
+
+.pre-footer-content p {
+    text-align: center;
+}
+
+.pre-footer-content p:nth-child(1) {
+    color: var(--color-white);
+    font-weight: var(--weight-bold);
+    font-size: var(--font-52);
+}
+
+.pre-footer-content p:nth-child(2) {
+    color: var(--color-white);
+}
+
+/** End Pre Footer Section **/
+
+/** Footer Section **/
+
+.footer-section__top {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.footer-section__top .nav-login__button {
+    background-color: var(--color-pre-footer);
+    border-color:  var(--color-pre-footer);
+    width: 167px;
+}
+
+.footer-section__top .nav-login__button:hover {
+    background-color: var(--color-white);
+    color: var(--color-pre-footer);
+}
+
+.footer-section__top {
+    border-bottom: 1px solid var(--color-border-footer);
+    padding-bottom: var(--spacing-35);
+}
+
+.footer-section__bottom {
+    justify-content: space-between;
+    padding-top: var(--spacing-35);
+}
+
+
+
+/** End Footer Section **/
 
 /*** End Home Page ***/
 
@@ -751,4 +829,22 @@ ul > li {
     .main-body {
         padding: 20px 150px;
     }
+
+    /* .blog-section {
+        width: 95%;
+    } */
 }
+
+@media screen and (min-width: 1500px) {
+
+    .blog-image {
+        height: 464px;
+        width: 466px;
+    }
+    .blog-section {
+        width: 90%;
+        margin-left: auto;
+        margin-right:  auto;
+    }
+}
+

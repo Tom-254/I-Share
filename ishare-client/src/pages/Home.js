@@ -19,11 +19,12 @@ import BlogSectionLeft from "../assets/blog-section-left.jpg";
 import BlogSectionOne from "../assets/blog-section-one.jpg";
 import BlogSectionTwo from "../assets/blog-section-two.jpg";
 import BlogSectionThree from "../assets/blog-section-three.jpg";
+import {ReactComponent as ArrowUp} from "../assets/arrow-up.svg"
 
 const Home = () => {
   return (
     <div className="flex-column main-body">
-      <nav className="flex flex-between">
+      <nav className="flex flex-between" id="top">
         <div>
           <IShareLogo />
         </div>
@@ -207,6 +208,64 @@ const Home = () => {
                 blogTitle="How to upload your photos <br/> to the application"
                 blogSubtext="The best way to upload your photos <br/> to the the cloud"
               />
+            </div>
+          </div>
+        </section>
+        <section className="section flex pre-footer-section">
+          <div className="flex-center__column pre-footer-section__container">
+            <div className="flex-column pre-footer-content">
+              <p>Keeping track of your photos</p>
+              <p>
+                Helping you keep track of your photos, who sees them, who likes
+                them, while <br /> at the same time providing access to them
+                anywhere any time
+              </p>
+            </div>
+            <IShareButton
+              buttonName={"Get Started"}
+              buttonStyle={"nav-login__button"}
+              linkTo="/signup"
+            />
+          </div>
+        </section>
+        <section className="section flex-column footer-section">
+          <div className="flex footer-section__top">
+            <div>
+              <IShareLogo />
+            </div>
+            <div className="flex nav-left">
+              <ul className="flex nav-left__links">
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/">About us</Link>
+                </li>
+                <li>
+                  <Link to="/">Contact us</Link>
+                </li>
+              </ul>
+            </div>
+            <IShareButton
+                linkTo="#top"
+                buttonName={"Back to top"}
+                buttonStyle={"nav-login__button"}
+                buttonIcon={<ArrowUp />}
+              />
+          </div>
+          <div className="flex footer-section__bottom">
+            <div className="flex left">
+                <p>&copy;
+                    2022 - I-Share all rights reserved
+                </p>
+            </div>
+            <div className="flex right">
+                <p>
+                    Terms & Conditions
+                </p>
+                <p>
+                    Privacy
+                </p>
             </div>
           </div>
         </section>
