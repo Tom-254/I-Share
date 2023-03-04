@@ -11,9 +11,14 @@ import CardTwoIcon from "../assets/card_two-icon.svg";
 import CardThree from "../assets/card_three.svg";
 import CardThreeIcon from "../assets/card_three_icon.svg";
 import AboutImage from "../assets/about-section.jpg";
-import MoreLeft from "../assets/more_about_one.jpg"
-import MoreRight from "../assets/more_about_two.jpg"
-import {ReactComponent as ArrowRight} from '../assets/arrow-right.svg'
+import MoreLeft from "../assets/more_about_one.jpg";
+import MoreRight from "../assets/more_about_two.jpg";
+import { ReactComponent as ArrowRight } from "../assets/arrow-right.svg";
+import BlogCard from "../components/BlogCard";
+import BlogSectionLeft from "../assets/blog-section-left.jpg";
+import BlogSectionOne from "../assets/blog-section-one.jpg";
+import BlogSectionTwo from "../assets/blog-section-two.jpg";
+import BlogSectionThree from "../assets/blog-section-three.jpg";
 
 const Home = () => {
   return (
@@ -132,33 +137,78 @@ const Home = () => {
           </div>
         </section>
         <section className="section flex more-section">
-            <div className="flex-column more-section__left">
-                <SectionTitles
-                    topText={"Who we are"}
-                    middleText={`Know more <br/>
+          <div className="flex-column more-section__left">
+            <SectionTitles
+              topText={"Who we are"}
+              middleText={`Know more <br/>
                     about who<br/>
                     we are`}
-                />
-                <div className="more-section__left-image">
-                    <img src={MoreLeft} alt="More Left" />
-                </div>
+            />
+            <div className="more-section__left-image">
+              <img src={MoreLeft} alt="More Left" />
             </div>
-            <div className="flex-column more-section__right">
-                <div className="flex more-section__right-image"><img src={MoreRight} alt="More Right" /></div>
-                <div className="flex-column more-section__right-content">
-                <p className='section-titles__bottom-text'>
-                    We make sharing, storing and finding your <br/>
-                    photos easy, Sharing to only the select few <br/>
-                    whom you have granted permission. You <br/>
-                    can also like, comment and message your <br/>
-                    friends at anytime
+          </div>
+          <div className="flex-column more-section__right">
+            <div className="flex more-section__right-image">
+              <img src={MoreRight} alt="More Right" />
+            </div>
+            <div className="flex-column more-section__right-content">
+              <p className="section-titles__bottom-text">
+                We make sharing, storing and finding your <br />
+                photos easy, Sharing to only the select few <br />
+                whom you have granted permission. You <br />
+                can also like, comment and message your <br />
+                friends at anytime
+              </p>
+              <Link to="/" className="flex card-link">
+                Read More
+                <ArrowRight />
+              </Link>
+            </div>
+          </div>
+        </section>
+        <section className="section flex-column blog-section">
+          <SectionTitles
+            topText={"The Blog"}
+            middleText={"Our Blog"}
+            bottomText={
+              "A collection of blogs from various trusted and latest's sources"
+            }
+          />
+          <div className="flex blog-section__bottom">
+            <div className="flex blog-section__bottom-left">
+              <div className="flex blog-image">
+                <img src={BlogSectionLeft} alt="blog section left" />
+              </div>
+              <div className="flex-column blog-content">
+                <p>
+                  Where do you find the work life <br />
+                  balance?
                 </p>
-                <Link to="/" className='flex card-link'>
-            Read More
-            <ArrowRight />
-        </Link>
-                </div>
+                <p>A snick pick into the work life balance illusion</p>
+              </div>
+              <Link to="/" className="flex blog-link">
+                <ArrowRight />
+              </Link>
             </div>
+            <div className="flex-column blog-section__bottom-right">
+              <BlogCard
+                blogImage={BlogSectionOne}
+                blogTitle="How to upload your photos <br/> to the application"
+                blogSubtext="The best way to upload your photos <br/> to the the cloud"
+              />
+              <BlogCard
+                blogImage={BlogSectionTwo}
+                blogTitle="How to upload your photos <br/> to the application"
+                blogSubtext="The best way to upload your photos <br/> to the the cloud"
+              />
+              <BlogCard
+                blogImage={BlogSectionThree}
+                blogTitle="How to upload your photos <br/> to the application"
+                blogSubtext="The best way to upload your photos <br/> to the the cloud"
+              />
+            </div>
+          </div>
         </section>
       </main>
     </div>
