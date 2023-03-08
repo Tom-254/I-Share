@@ -90,6 +90,7 @@
     --height-50: 50px;
     --height-40: 40px;
     --height-30: 30px;
+    --height-20: 20px;
 
     /** Gradients **/
     --card-gradient: linear-gradient(115.31deg, #FEF6DC 4.65%, #F4D5DE 39.9%, #D7C1EC 73.57%);
@@ -244,6 +245,72 @@ img {
 
 /*= End Layouts =*/
 
+
+/** Modal Component Styles **/
+
+
+
+
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    width: var(--height-40);
+    height: var(--height-40);
+    background: none;
+    border: none;
+}
+
+.modal-centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-main {
+    width: 250px;
+    height: 170px;
+    background: white;
+    color: white;
+    z-index: 10;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+}
+
+
+.modal-header {
+    border-bottom: 1px solid var(--color-border);
+    color: black;
+    padding: var(--spacing-15);
+}
+
+
+.modal-title {
+    text-align: center;
+}
+
+.modal-content {
+    
+}
+
+.modal-footer {
+
+}
+
+/** End Modal Component Styles **/
 
 /*** End General Component Classes ***/
 

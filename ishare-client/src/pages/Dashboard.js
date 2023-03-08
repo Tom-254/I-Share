@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import IShareLogo from "../components/IShareLogo";
 import { ReactComponent as ExploreIcon } from "../assets/explore-icon.svg";
@@ -17,8 +17,10 @@ import DashStats from "../components/DashStats";
 import ImageShow from "../components/ImageShow";
 import ManImage from "../assets/man-image.png";
 import NatureImage from "../assets/nature-image.png";
+import IShareModal from "../components/IShareModal";
 
 const Dashboard = () => {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className="dashboard">
       <aside className="flex-column dashboard-left">
@@ -72,6 +74,7 @@ const Dashboard = () => {
             buttonIconLeft={<UploadIcon />}
             buttonName={"Upload Image"}
             buttonStyle={"nav-login__button"}
+            onClick={() => setOpenModal(prev => !prev)}
           />
         </div>
         <div className="flex dashboard-right-middle">
@@ -118,6 +121,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      { openModal && <IShareModal setIsOpen={setOpenModal} > </IShareModal> }
     </div>
   );
 };
