@@ -1,12 +1,12 @@
 import React from 'react'
 
-const IShareInput = ({containerStyle, labelName, placeHolder, labelStyle, inputStyle, isRequired, inputValue, inputName, onChange}) => {
+const IShareInput = ({containerStyle, labelName, placeHolder, labelStyle, inputStyle, isRequired, inputType, inputValue, inputName, onChange}) => {
   return (
     <div className={`${containerStyle ? containerStyle : "input-container"}`}>
       <label className={`${labelStyle ? labelStyle : "input-label"}`} >
         {labelName}
       </label>
-      <input type="text" className={`${inputStyle ? inputStyle : "input-field"}`} placeholder={placeHolder} required={isRequired} value={inputValue} name={inputName} onChange={onChange}/>
+      { !inputType ? <input type="text" className={`${inputStyle ? inputStyle : "input-field field"}`} placeholder={placeHolder} required={isRequired} value={inputValue} name={inputName}  onChange={onChange}/>: <textarea type="text" className={`${inputStyle ? inputStyle : "input-field textarea"}`} placeholder={placeHolder} required={isRequired} value={inputValue} name={inputName}  onChange={onChange} rows="4"/>}
     </div>
   )
 }

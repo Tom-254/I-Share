@@ -1,9 +1,41 @@
+import { has } from "lodash";
 import React from "react";
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
+import { ReactComponent as BackButton } from "../assets/back.svg";
 
-const IShareModal = ({ setIsOpen, children }) => {
+const IShareModal = ({
+  setIsOpen,
+  children,
+  setInputValues,
+  hasNext,
+  setHasNext,
+}) => {
+  const backButtonClicked = () => {
+    if (!hasNext) {
+      setInputValues((prev) => ({
+        image_name: "",
+        image_path: "",
+        image_file: "",
+      }));
+    } else if (hasNext === "image") {
+      setHasNext(false);
+    } else if (hasNext === "share") {
+      setHasNext("image");
+    }
+  };
+
+  const onClickNext  = () => {
+    setHasNext("share")
+  }
+
   return createPortal(
-    <div className="modal-container" onClick={() => setIsOpen(false)}>
+    <div
+      className="modal-container"
+      onClick={function (e) {
+        if (e.target.className === "modal-container") setIsOpen(false);
+      }}
+    >
       <button className="modal-close" onClick={() => setIsOpen(false)}>
         <svg
           width="21"
@@ -20,14 +52,27 @@ const IShareModal = ({ setIsOpen, children }) => {
       </button>
       <div className="modal-centered">
         <div className="modal-main">
-          <div className="modal-header">
+          <div className="flex modal-header">
+            {hasNext && (
+              <BackButton
+                className="modal-button"
+                onClick={backButtonClicked}
+              />
+            )}
             <p className="modal-title">
-                Upload new image
+              {!hasNext
+                ? "Upload new Image"
+                : hasNext === "image"
+                ? "Preview image"
+                : hasNext === "share"
+                ? "Create Image"
+                : ""}
             </p>
+            {hasNext && <Link onClick={onClickNext}>{hasNext === "share"
+                ? "Create"
+                : "Next"}</Link>}
           </div>
-          <div className="modal-content">
-            {children}
-          </div>
+          <div className="modal-content">{children}</div>
           <div className="modal-footer"></div>
         </div>
       </div>
