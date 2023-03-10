@@ -12,7 +12,6 @@ from models.images import Image
 @app_views.route('/share_images/<share_id>', methods=['POST'])
 def post_shared_with(shared_id=None):
     """Share an Image"""
-    print(request.headers)
     return make_response(jsonify(shared_id), 200)
 
 
@@ -21,14 +20,12 @@ def post_shared_with(shared_id=None):
 def get_shared_with(shared_id=None):
     """Retrieves the list of all Image objects
     or a specific Image object"""
-    print(request.headers, 'hello')
     return make_response(jsonify(shared_id), 200)
 
 
 @app_views.route('/unshare_images', methods=['DELETE'])
 @app_views.route('/unshare_images/<share_id>', methods=['DELETE'],
                  strict_slashes=False)
-def del_shared_with(share_id=None):
+def del_shared_with(shared_id=None):
     """Deletes a Image object"""
-    print(request.headers)
     return make_response(jsonify(shared_id), 200)
