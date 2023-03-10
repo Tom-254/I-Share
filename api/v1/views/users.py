@@ -30,7 +30,9 @@ def get_users(user_id):
     users = storage.all("User")
     all_users = []
     for user in users.values():
-        all_users.append(user.to_dict())
+        user_dict = user.to_dict()
+        del user_dict["password"]
+        all_users.append(user_dict)
     return jsonify(all_users)
 
 
