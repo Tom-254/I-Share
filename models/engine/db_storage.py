@@ -72,6 +72,15 @@ class DBStorage():
             return None
         return obj
 
+    def get_user_with_email(self, email):
+        """
+        Gets a user object base on the email
+        """
+        obj = self.__session.query(User).filter_by(email=email).first()
+        if obj is None:
+            return None
+        return obj
+
     def count(self, cls=None):
         """
             Count the number of objects in storage:

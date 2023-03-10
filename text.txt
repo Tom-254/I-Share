@@ -1,0 +1,62 @@
+[
+  {
+    "__class__": "User",
+    "created_at": "2023-02-25T01:05:49.000000",
+    "email": "tish@gmail.com",
+    "first_name": "Worked Workingeddd",
+    "id": "08f15a9d-1b46-4a2d-8549-a088a6fb6c22",
+    "last_name": "Jambo",
+    "password": "helloworldp",
+    "updated_at": "2023-02-25T01:22:15.000000"
+  },
+  {
+    "__class__": "User",
+    "created_at": "2023-02-25T01:24:08.000000",
+    "email": "tomosis@gmail.com",
+    "first_name": "Jamila analia",
+    "id": "1d0695d1-5e30-459d-8e06-99eeafe5cbde",
+    "last_name": "Jambo",
+    "password": "helloworldp",
+    "updated_at": "2023-02-25T01:24:08.000000"
+  },
+  {
+    "__class__": "User",
+    "created_at": "2023-02-28T14:36:19.000000",
+    "email": "tish205@gmail.com",
+    "first_name": "working",
+    "id": "2ac76e04-703d-4957-bdde-e56ef4a3eb57",
+    "last_name": "Jambo",
+    "password": "helloworld",
+    "updated_at": "2023-02-28T14:36:19.000000"
+  },
+  {
+    "__class__": "User",
+    "created_at": "2023-02-25T01:01:07.000000",
+    "email": "tish@gmail.com",
+    "first_name": "Worked Tommorrow",
+    "id": "4cc7fb11-bdd1-4aab-a12b-1a26b2809442",
+    "last_name": "Jambo",
+    "password": "helloworld",
+    "updated_at": "2023-02-25T01:01:07.000000"
+  },
+  {
+    "__class__": "User",
+    "created_at": "2023-02-28T15:07:28.000000",
+    "email": "tiegomseeraoscar295@gmail.com",
+    "first_name": "Oscar",
+    "id": "5e432e8f-9567-4468-85c0-e3eca54ba43d",
+    "last_name": "Tiego",
+    "password": "adfadfafd",
+    "updated_at": "2023-02-28T15:07:28.000000"
+  },
+  {
+    "__class__": "User",
+    "created_at": "2023-02-25T01:18:31.000000",
+    "email": "tomosis@gmail.com",
+    "first_name": "Worked Tommorrowee",
+    "id": "fd44606d-6078-4d32-8ac1-8b2f4a568b69",
+    "last_name": "Jambo",
+    "password": "helloworldp",
+    "updated_at": "2023-02-25T01:18:31.000000"
+  }
+]
