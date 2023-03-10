@@ -17,10 +17,10 @@ const ImageShow = ({profileImage, contentImage, name, email, imageDescription}) 
                     <img src={profileImage} alt="Profile" />
                 </div>
                 <div className='flex-column image-top-left__content'>
-                    <p>
+                    <p title={parse(name)}>
                         {name}
                     </p>
-                    <p>
+                    <p title={email}>
                         {parse(email || "")}
                     </p>
                 </div>

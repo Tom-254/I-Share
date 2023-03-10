@@ -1,22 +1,38 @@
-import { has } from "lodash";
-import React from "react";
+import React, { useContext } from "react";
 import { createPortal } from "react-dom";
+import * as Upload from "upload-js-full";
+import fetch from "node-fetch";
 import { Link } from "react-router-dom";
+
+import { AuthContext } from "../context/authContext";
 import { ReactComponent as BackButton } from "../assets/back.svg";
+import { isEmpty } from "lodash";
 
 const IShareModal = ({
   setIsOpen,
   children,
+  inputValues,
   setInputValues,
   hasNext,
   setHasNext,
+  errors,
+  setError,
 }) => {
+  const { currentUser, post_image } = useContext(AuthContext);
+
   const backButtonClicked = () => {
     if (!hasNext) {
-      setInputValues((prev) => ({
+      setInputValues(() => ({
         image_name: "",
         image_path: "",
+        image_description: "",
         image_file: "",
+        image_type: "",
+        image_raw: "",
+      }));
+      setError((prev) => ({
+        image_name: "",
+        image_description: "",
       }));
     } else if (hasNext === "image") {
       setHasNext(false);
@@ -25,9 +41,99 @@ const IShareModal = ({
     }
   };
 
-  const onClickNext  = () => {
-    setHasNext("share")
-  }
+  const onClickNext = () => {
+    setHasNext("share");
+    if (hasNext === "share") {
+      if (!inputValues.image_name && !inputValues.image_description) {
+        setError((prev) => ({
+          image_name: "Photo Name Required!",
+          image_description: "Photo Caption Required!",
+        }));
+        return;
+      } else if (!inputValues.image_name) {
+        setError((prev) => ({
+          ...prev,
+          image_name: "Photo Name Required!",
+        }));
+        return;
+      } else if (!inputValues.image_description) {
+        setError(() => ({
+          image_name: "",
+          image_description: "Photo Caption Required!",
+        }));
+        return;
+      } else {
+        const uploadManager = new Upload.UploadManager(
+          new Upload.Configuration({
+            fetchApi: fetch,
+            apiKey: "public_12a1y1w83Ea2Y6zCrmrybWt6QsLp", // e.g. "secret_xxxxx"
+          })
+        );
+
+        uploadManager
+          .upload({
+            accountId: "12a1y1w", // e.g. "W142hJk"
+
+            data: inputValues.image_raw,
+
+            // Supported when: 'data' is not a stream.
+            maxConcurrentUploadParts: 4,
+            mime: inputValues.image_type,
+            metadata: {
+              productId: 60891,
+            },
+
+            tags: ["example_tag"],
+
+            path: {
+              folderPath: "/uploads/{UTC_YEAR}/{UTC_MONTH}/{UTC_DAY}",
+              fileName: "{UNIQUE_DIGITS_8}{ORIGINAL_FILE_EXT}",
+            },
+
+            cancellationToken: {
+              isCancelled: false,
+            },
+          })
+          .then(
+            async ({ fileUrl, filePath }) => {
+              // --------------------------------------------
+              // File successfully uploaded!
+              // --------------------------------------------
+              // The 'filePath' uniquely identifies the file,
+              // and is what you should save to your DB.
+              // --------------------------------------------
+
+              try {
+                await post_image({
+                  user_id: currentUser.id,
+                  image_name: inputValues.image_name,
+                  image_path: fileUrl,
+                  image_description: inputValues.image_description,
+                });
+
+                setInputValues(() => ({
+                  image_name: "",
+                  image_path: "",
+                  image_description: "",
+                  image_file: "",
+                  image_type: "",
+                  image_raw: "",
+                }));
+                setError(() => ({
+                  image_name: "",
+                  image_description: "",
+                }));
+              } catch (error) {
+                console.log(error.message);
+              }
+              // console.log(`File uploaded to: ${fileUrl}`);
+            },
+            (error) => console.error(`Upload failed: ${error.message}`, error)
+          );
+          setIsOpen(false)
+      }
+    }
+  };
 
   return createPortal(
     <div
@@ -68,9 +174,11 @@ const IShareModal = ({
                 ? "Create Image"
                 : ""}
             </p>
-            {hasNext && <Link onClick={onClickNext}>{hasNext === "share"
-                ? "Create"
-                : "Next"}</Link>}
+            {hasNext && (
+              <Link onClick={onClickNext}>
+                {hasNext === "share" ? "Create" : "Next"}
+              </Link>
+            )}
           </div>
           <div className="modal-content">{children}</div>
           <div className="modal-footer"></div>

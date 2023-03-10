@@ -8,6 +8,10 @@ import SignUp from "./pages/SignUp";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Home />
+  },
+  {
+    path: "/dashboard",
     element: <Dashboard />
   },
   {
