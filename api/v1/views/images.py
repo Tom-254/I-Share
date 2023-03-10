@@ -13,10 +13,11 @@ def post_image():
 
     try:
         req = request.get_json()
+        print(req)
     except Exception as ex:
         return make_response(jsonify({'error': 'Not a JSON'}), 400)
 
-    for field in ["user_id", "image_name", "image_path"]:
+    for field in ["user_id", "image_name", "image_path", "image_description"]:
         if field not in req:
             return make_response(jsonify({'error': f"Missing {field}"}), 400)
 
