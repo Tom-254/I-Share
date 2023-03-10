@@ -22,7 +22,3 @@ class User(BaseModel, Base):
                           cascade="delete")
     shared_with = relationship("SharedWith", backref="user",
                                cascade="delete")
-
-    def __init__(self, *args, **kwargs):
-        """initializes Image"""
-        super().__init__(*args, **kwargs)
