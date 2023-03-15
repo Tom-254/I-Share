@@ -6,7 +6,7 @@ import fetch from "node-fetch";
 
 export const AuthContext = createContext();
 
-const API = axios.create({ baseURL: "http://127.0.0.1:5050/api/v1/" });
+const API = axios.create({ baseURL: "http://34.201.165.150:5000/api/v1/" });
 
 export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
@@ -14,7 +14,7 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const [userImages, setUserImages] = useState(
-    JSON.parse(localStorage.getItem("images")) || null
+    JSON.parse(localStorage.getItem("images")) || []
   );
 
   const [isLoading, setIsLoading] = useState(null);
@@ -32,6 +32,17 @@ export const AuthContextProvider = ({ children }) => {
         setCurrentUser(res.data);
       } else throw Error(res.data.error);
     }
+
+    console.log(currentUser);
+    const resImages = await API.get("/images/" + res?.data?.id);
+    if (!isEmpty(resImages.data)) {
+      if (!resImages.data.error) {
+        setUserImages((prev) => ([...prev, resImages.data.filter(item => item.id === res?.data?.id)]))
+        console.log(resImages.data)
+    }
+      else throw Error(resImages.data.error);
+    }
+
     setIsLoading(false);
   };
 
@@ -100,13 +111,16 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     setCurrentUser(null);
-    setUserImages(null);
+    setUserImages([]);
   };
 
   const post_image = async (inputs) => {
     const res = await API.post("/images", inputs);
     if (!isEmpty(res.data)) {
-      if (!res.data.error) setUserImages((prev) => [...prev, res.data]);
+      if (!res.data.error) {
+        setUserImages((prev) => ([...prev, res.data]))
+        console.log(res.data)
+    }
       else throw Error(res.data.error);
     }
   };

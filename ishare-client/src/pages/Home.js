@@ -47,7 +47,7 @@ const Home = () => {
           />
         </div>
       </nav>
-      <main className="home-body">
+      <main className="flex-column home-body">
         <section className="section flex-column hero-section">
           <div className="flex-center__column hero-section__content">
             <p className="section-titles__top-text">
