@@ -10,3 +10,6 @@ GRANT SELECT ON performance_schema.* TO 'ishare_dev'@'localhost' WITH GRANT OPTI
 
 -- Flush privileges
 FLUSH PRIVILEGES;
+
+ALTER USER 'ishare_dev'@'localhost'
+IDENTIFIED WITH mysql_native_password BY 'Joshuat254';
